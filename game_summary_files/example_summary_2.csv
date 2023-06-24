@@ -1,0 +1,4 @@
+round_number,question_category,question_difficulty,question_text,user_answer,correct_answer,correct,unscaled_points_earned
+1,Animals,easy,What is the fastest  land animal?,Cheetah,Cheetah,True,10
+,,,,,,Total Game Score (Unscaled):,10
+,,,,,,Total Game Score (Scaled):,20

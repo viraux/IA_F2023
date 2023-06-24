@@ -1,0 +1,7 @@
+round_number,question_category,question_difficulty,question_text,user_answer,correct_answer,correct,unscaled_points_earned
+1,General Knowledge,easy,What airline was the owner of the plane that crashed off the coast of Nova Scotia in 1998?,Swiss Air,Swiss Air,True,10
+2,Science: Gadgets,medium,Who patented a steam engine that produced continuous rotary motion?,James Watt,James Watt,True,20
+3,Science: Gadgets,medium,Which company developed the Hololens?,HTC,Microsoft,False,-10
+5,Science: Gadgets,medium,Which company developed the Hololens?,Microsoft,Microsoft,True,20
+,,,,,,Total Game Score (Unscaled):,40
+,,,,,,Total Game Score (Scaled):,80

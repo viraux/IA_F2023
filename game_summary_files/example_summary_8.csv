@@ -1,0 +1,5 @@
+round_number,question_category,question_difficulty,question_text,user_answer,correct_answer,correct,unscaled_points_earned
+1,Science & Nature,easy,What is the official name of the star located closest to the North Celestial Pole?,Polaris,Polaris,True,10
+2,Art,medium,Which artist’s studio was known as 'The Factory'?,Andy Warhol,Andy Warhol,True,20
+,,,,,,Total Game Score (Unscaled):,30
+,,,,,,Total Game Score (Scaled):,60

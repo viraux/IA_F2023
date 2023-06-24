@@ -1,0 +1,7 @@
+round_number,question_category,question_difficulty,question_text,user_answer,correct_answer,correct,unscaled_points_earned
+1,General Knowledge,easy,What geometric shape is generally used for stop signs?,Octagon,Octagon,True,10
+2,General Knowledge,medium,"In the Morse code, which letter is indicated by 3 dots? ",A,S,False,-10
+3,General Knowledge,hard,Which of the following languages does NOT use gender as a part of its grammar?,German,Turkish,False,-15
+4,General Knowledge,hard,What is the most commonly used noun in the English language?,Time,Time,True,30
+,,,,,,Total Game Score (Unscaled):,15
+,,,,,,Total Game Score (Scaled):,15

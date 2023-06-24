@@ -1,0 +1,5 @@
+round_number,question_category,question_difficulty,question_text,user_answer,correct_answer,correct,unscaled_points_earned
+2,Animals,easy,How many teeth does an adult rabbit have?,28,28,True,10
+3,Entertainment: Board Games,medium,"In Chess, the Queen has the combined movement of which two pieces?",Bishop and Rook,Bishop and Rook,True,20
+,,,,,,Total Game Score (Unscaled):,30
+,,,,,,Total Game Score (Scaled):,30

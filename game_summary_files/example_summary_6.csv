@@ -1,0 +1,5 @@
+round_number,question_category,question_difficulty,question_text,user_answer,correct_answer,correct,unscaled_points_earned
+1,Art,easy,Who painted The Starry Night?,Vincent van Gogh,Vincent van Gogh,True,10
+2,Animals,hard,Which of these animals is NOT a lizard?,Green Iguana,Tuatara,False,-15
+,,,,,,Total Game Score (Unscaled):,-5
+,,,,,,Total Game Score (Scaled):,-10

@@ -1,0 +1,5 @@
+round_number,question_category,question_difficulty,question_text,user_answer,correct_answer,correct,unscaled_points_earned
+1,Vehicles,easy,Which of the following collision avoidance systems helps airplanes avoid colliding with each other?,Surface to Ground,TCAS,False,-5
+2,Science: Gadgets,easy,What round is a classic AK-47 chambered in?,No idea,7.62x39mm,False,-5
+,,,,,,Total Game Score (Unscaled):,-10
+,,,,,,Total Game Score (Scaled):,-30

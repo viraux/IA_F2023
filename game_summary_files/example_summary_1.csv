@@ -1,0 +1,5 @@
+round_number,question_category,question_difficulty,question_text,user_answer,correct_answer,correct,unscaled_points_earned
+1,Art,easy,Who painted the biblical fresco The Creation of Adam?,Caravaggio,Michelangelo,False,-5
+2,Sports,easy,Which two teams played in Super Bowl XLII?,The Seattle Seahawks & The Denver Broncos,The New York Giants & The New England Patriots,False,-5
+,,,,,,Total Game Score (Unscaled):,-10
+,,,,,,Total Game Score (Scaled):,-10

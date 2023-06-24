@@ -1,0 +1,13 @@
+{
+    "num_rounds": "4",
+    "potential_categories": [
+        "Entertainment: Comics",
+        "Entertainment: Musicals & Theatres",
+        "Animals",
+        "Mythology",
+        "Entertainment: Board Games",
+        "Vehicles"
+    ],
+    "game_difficulty": "easY",
+    "game_summary_filename": "example_summary_9.csv"
+}

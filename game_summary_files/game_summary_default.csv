@@ -1,0 +1,5 @@
+round_number,question_category,question_difficulty,question_text,user_answer,correct_answer,correct,unscaled_points_earned
+1,Art,easy,Who painted the Sistine Chapel?,Leonardo da Vinci,Michelangelo,False,-5
+2,Animals,easy,What do you call a baby bat?,Kid,Pup,False,-5
+,,,,,,Total Game Score (Unscaled):,-10
+,,,,,,Total Game Score (Scaled):,-20

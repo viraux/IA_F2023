@@ -1,0 +1,9 @@
+{
+    "num_rounds": "5",
+    "potential_categories": [
+        "General Knowledge",
+        "Science: Gadgets"
+    ],
+    "game_difficulty": "medIUM",
+    "game_summary_filename": "example_summary_10.csv"
+}

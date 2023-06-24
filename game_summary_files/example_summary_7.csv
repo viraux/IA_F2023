@@ -1,0 +1,5 @@
+round_number,question_category,question_difficulty,question_text,user_answer,correct_answer,correct,unscaled_points_earned
+1,Celebrities,easy,By what name is Carlos Estevez better known? ,Charlie Sheen,Charlie Sheen,True,10
+2,History,medium,"Which American civilization is the source of the belief that the world would end or drastically change on December 21st, 2012?",The Maya,The Mayans,False,-10
+,,,,,,Total Game Score (Unscaled):,0
+,,,,,,Total Game Score (Scaled):,0

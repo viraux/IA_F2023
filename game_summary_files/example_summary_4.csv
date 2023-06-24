@@ -1,0 +1,6 @@
+round_number,question_category,question_difficulty,question_text,user_answer,correct_answer,correct,unscaled_points_earned
+1,Animals,medium,What is the collective noun for bears?,Drove,Sloth,False,-10
+2,Animals,medium,What dog bread is one of the oldest breeds of dog and has flourished since before 400 BCE.,Boxers,Pugs,False,-10
+3,Vehicles,easy,Which Italian city is home of the car manufacturer 'Fiat'?,Modena,Turin,False,-5
+,,,,,,Total Game Score (Unscaled):,-25
+,,,,,,Total Game Score (Scaled):,-50
