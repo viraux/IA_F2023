@@ -1,8 +1,8 @@
 ##########################################################
 # SI 106 Fall 2023 Coding Assessment Specification
 # 
-# Your Name: 
-# Your Michigan Email: 
+# Your Name: AJ deVaux
+# Your Michigan Email: ajdv@umich.edu
 # 
 # API Documentation: https://opentdb.com/api_config.php
 ##########################################################
