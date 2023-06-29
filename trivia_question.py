@@ -119,6 +119,7 @@ def choose_json():
     pass
 
 
+# Open file using current path and return it after converting from json
 def read_json(filename):
     path = os.path.dirname(os.path.abspath(__file__))
     file = open(f"{path}/game_config_files/{filename}")
@@ -127,6 +128,7 @@ def read_json(filename):
     return data
 
 
+# Takes a set of rules and checks if they are valid
 def rule_set_up(rules):
     round_num = rules["num_rounds"]
     cats = rules["potential_categories"]
@@ -134,6 +136,8 @@ def rule_set_up(rules):
     summary_file = rules["game_summary_filename"]
 
     # print(round_num, cats, diff, summary_file)
+
+    # Testing number of rounds is between 1-15.  2 is the default when it is invalid
     try:
         round_num = int(round_num)
         if round_num > 0 and round_num < 16:
@@ -148,6 +152,7 @@ def rule_set_up(rules):
 
     # print(round_num)
 
+    # Testing category selection is not empty.  ["Art", "Animals","Vehicles"] is the default when it is invalid
     try:
         if len(cats) != 0:
             print("Valid selection of categories.")
@@ -161,6 +166,8 @@ def rule_set_up(rules):
 
     # print(cats)
 
+
+    # Testing difficulty selection is valid.  medium is the default when it is invalid
     try:
         diff = diff.lower().strip()
         if diff == 'easy' or diff == 'medium' or diff == 'hard':
@@ -174,6 +181,8 @@ def rule_set_up(rules):
         diff = "medium"
 
     # print(diff)
+
+    #Testing sumamry file name is valid.  "game_summary_default.csv" is the default when it is invalid
 
     try:
         summary_file = summary_file.strip().lower()
@@ -189,6 +198,7 @@ def rule_set_up(rules):
 
     # print(summary_file)
 
+    # Displays game rules to the user after being adjusted
     print("\n---The Game Rules Will be as Follows---\n")
 
     print(f"Number of Rounds: {round_num}\n")
@@ -201,9 +211,12 @@ def rule_set_up(rules):
 
     print("-----------------------------------------")
 
+    interrupt = input(f"\nCheck out the rules above for the game, then hit enter to continue. ")
+
     return round_num,cats,diff,summary_file
 
 
+# Begins the game based on a given ruleset
 def start_game(rounds,cats,diff,filename,score):
     # print(rounds,cats,diff,filename)
     # print(cats)
@@ -212,6 +225,8 @@ def start_game(rounds,cats,diff,filename,score):
 
     # print(cats)
 
+
+    # Create a list of each heading and writes them to summary file
     headings = ['round_number','question_category','question_difficulty','question_text','user_answer','correct_answer','correct','unscaled_points_earned']
 
     f = open(f"game_summary_files/{filename}","w")
@@ -220,19 +235,22 @@ def start_game(rounds,cats,diff,filename,score):
 
     data_writer.writerow(headings)
 
+
+    # Loops a number of times equal to the round number.
     for i in range(rounds):
         i += 1
         print(f"\n---Round Number {i}---\n")
         
         # print(i)
         
+        # Displays category options and prompts the user for a selection of one.
         print("Category Options:")
         for j in range(len(cats)):
             print(f"{j+1}. {cats[j]}")
 
         user_cat = input("\nPlease type the number associated with your preferred category. ").strip()
 
-        # Adding in check of user input - added feature
+        # Adding in check of user input (added feature)
         while True:
             try:
                 user_cat = int(user_cat)
@@ -247,6 +265,7 @@ def start_game(rounds,cats,diff,filename,score):
         
         # print("out")
 
+        # Prompts user to choose a difficulty for the question.  If invalid input, defaults to medium
         print("""Question Difficult Options: \n-> Easy \n-> Medium \n-> Hard""")
 
         user_diff = input("Please choose the question difficulty you would like from the options above. ").lower().strip()
@@ -257,17 +276,21 @@ def start_game(rounds,cats,diff,filename,score):
             user_diff = "medium"
             print(f"\nSorry, invalid response!  Fetching a {user_diff} difficulty question in the {cat_name} category default")
 
+        # Calls API function to get question.  Returns score and a list of data from the round.  Writes this data to the summary file.
         score, data = call_API(cat_name,user_diff,i,score)
 
         data_writer.writerow(data)
 
-        interrupt = input(f"Round {i} is now over, type anything to continue. ")
+
+        # Breaks up game so user has a pause after each round to review.
+        interrupt = input(f"Round {i} is now over, hit enter to continue. ")
 
 
     print("\n-----------------------------------------")
 
     print("Thank you for playing my Trivia Game!\n")
 
+    # Checking game difficulty to scale the score appropiately 
     if diff == "medium":
         weighted_score = score*2
         print("\nDoubling your score because the difficulty was medium.")
@@ -282,15 +305,16 @@ def start_game(rounds,cats,diff,filename,score):
         pass
 
     print(f"Your Unweighted Score: {score}")
-    print(f"Your weighted Score: {weighted_score}\n")
+    print(f"Your Weighted Score: {weighted_score}\n")
 
     print(f"All your game data is saved in {filename}.  Check it out in the game_config_files folder!")
 
     print("\n-----------------------------------------")
 
-    data_writer.writerow(f"Total Game Score (Unscaled): {score}")
+    # Write final scores to file and then closes it
+    data_writer.writerow([f"Total Game Score (Unscaled): {score}"])
                          
-    data_writer.writerow(f"Total Game Score (Scaled): {weighted_score}")
+    data_writer.writerow([f"Total Game Score (Scaled): {weighted_score}"])
 
     f.close()
 
@@ -302,11 +326,14 @@ def start_game(rounds,cats,diff,filename,score):
         
 
 
-
+# Calls the API based on given category, difficulty, round, and score.
 def call_API(cat,diff,round,score):
     
+    # Converts the category to the id based on the given map.
     cat_id = api_category_map[cat]
 
+
+    # Makes a request to the API given the following url, then converts from json.
     url = f"https://opentdb.com/api.php?amount=1&category={cat_id}&difficulty={diff}&type=multiple"
 
     # print(url)
@@ -319,6 +346,7 @@ def call_API(cat,diff,round,score):
 
     data = whole_data["results"][0]
 
+    # Finds the question, correct answer, and incorrect answers from called data
     question = html.unescape(data["question"])
     # print(question)
     correct = str(data["correct_answer"])
@@ -328,7 +356,9 @@ def call_API(cat,diff,round,score):
 
     input_bool = True
 
+    # Checks the difficulty to determine what is shown to the user when answering.
     if diff == "easy":
+        # Picks a random incorrect answer and shuffles it with the correct one.
         rand_incorrect = incorrect.pop(random.randrange(0,len(incorrect)))
         # print(rand_incorrect)
         answer_pool.append(str(rand_incorrect))
@@ -341,6 +371,7 @@ def call_API(cat,diff,round,score):
 
         user_answer = input("\nNow it's your turn, enter your answer! ").lower()
 
+        # Checks user response and adds/subtracts points accordingly
         if user_answer == correct.lower():
             score += 10
             print(f"\nCorrect! The answer was {correct}.  Adding 10 to your score; it is currently {score}")
@@ -351,6 +382,7 @@ def call_API(cat,diff,round,score):
         
         pass
     elif diff == "medium":
+        # Shuffles all incorrect answers and correct answer into random order to be displayed
         answer_pool += incorrect
         random.shuffle(answer_pool)
         print(f"\nMedium Question {round}: {question}\n")
@@ -361,6 +393,8 @@ def call_API(cat,diff,round,score):
 
         user_answer = input("\nNow it's your turn, enter your answer! ")
 
+
+        # Checks user response and adds/subtracts points accordingly
         if user_answer == correct.lower():
             score += 20
             print(f"\nCorrect! The answer was {correct}.  Adding 20 to your score; it is currently {score}")
@@ -374,6 +408,8 @@ def call_API(cat,diff,round,score):
 
         user_answer = input("\nNow it's your turn, enter your answer! ")
 
+
+        # Checks user response and adds/subtracts points accordingly
         if user_answer == correct.lower():
             score += 30
             print(f"\nCorrect! The answer was {correct}.  Adding 30 to your score; it is currently {score}")
@@ -383,7 +419,7 @@ def call_API(cat,diff,round,score):
             input_bool = False
         pass
 
-
+    # Returns list of information asssociated with the current round and the overall score
     data_content = [round,cat,diff,question,user_answer,correct,input_bool,score]
 
     return score, data_content
